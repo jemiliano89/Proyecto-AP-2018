@@ -1,0 +1,61 @@
+//en Web.config
+<ConnectionStrings>
+	<add name="con" connectionString="Data Source=./INTENDENCIA_1; Initial Catalog=ContenedoresBD; User Id=usuario; Password=pass" providerName="System.Data.SqlClient">
+</ConnectionStrings>
+
+//en Zona.cs
+public bool elimnar(){
+	bool ret=false;
+	string strCon=ConfigurationManager.ConnectionStrings["con"].connectionString;
+	Sql connection con=new SqlConnection(strCon);
+	SqlCommand cmd=new SqlCommand(con);
+	SqlTransaction trn=null;
+	try{
+		con.Open();
+		trn=cmd.BeginTransaction();
+		cmd.CommandText="delete from CallesZonas where letraZona=@letra;";
+		cmd.Parameters.AddWithValue("@letra", this.Letra);
+		cmd.ExecuteNonQuery();
+
+		cmd.CommandText="delete from Zonas where letra=@letra;";
+		cmd.ExecuteNonquery();
+		cmd.Commit();
+		ret=true;
+
+	}catch(Exception ex){
+		if(trn!=null)
+			cmd.Rollback();
+	}finally{
+		if(con.State==ConnectionState.Open){
+			con.Close();
+			con.Dispose();
+		}
+	}
+	return ret;
+}
+
+[ServiceContract]
+public interface IContenedor(){
+	[OperationContract]
+	public List<DtoContenedor> contOcupados(int porcentaje);
+}
+[DataContract]
+public class DtoContenedor(){
+	[DataMember]
+	public int Nro {get; set;}
+	[DataMEmber]
+	public char Letra {get; set;}
+}
+	
+
+
+
+<?xml version='1.0' encoding='utf-8'?>
+<tomcat-users>
+ <role rolename="manager" />
+ <role rolename="admin"/>
+ <user username="juvenencio" password="********" roles="manager,admin"/>
+ 
+</tomcat-users>
+		
+		

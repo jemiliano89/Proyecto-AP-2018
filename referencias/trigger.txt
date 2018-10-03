@@ -1,0 +1,33 @@
+Recebido de 140A7D7D na porta 128
+02 01 00 00 00 15 00 00 
+00 43 00 00 00 DD 5F 00 
+00 DD 5F 00 00 55 03 
+UnitID recebida: 1
+ID recebida: 24541
+BCC correto: Calc 55 Rec 55
+TriggerID=24541
+Enviando ACK id=24541
+Trigger WPS ok
+FOTO chegou
+Placa SCG4595 em exp 0. Processa proxima: 0
+FOTO chegou
+Usando exp 0
+LicenseInfo TriggerID=24541 SCG4595
+Sem espaco livre nos 5 slots. Realocando...
+CarId: 15992. alocando 81358 no slot 1/5
+Recebido de 140A7D7D na porta 128
+02 01 00 00 00 11 00 00 
+00 C0 00 00 00 DD 5F 00 
+00 50 03 
+UnitID recebida: 1
+ID recebida: 24541
+BCC correto: Calc 50 Rec 50
+Recebido de 140A7D7D na porta 128
+02 01 00 00 00 15 00 00 
+00 47 00 00 00 DE 5F 00 
+00 78 3E 00 00 96 03 
+UnitID recebida: 1
+ID recebida: 24542
+BCC correto: Calc 96 Rec 96
+-->   999   968: FF D8 FF C4 01 A2 00 00 01 05 
+GetPicture WPS ok

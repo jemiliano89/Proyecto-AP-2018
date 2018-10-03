@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- adaptarse a tamaÑo de pantalla -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="jquery.mobile.toast.js"></script>
+	<script type="text/javascript" src="funciones.js"></script>
+    <!-- <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" /> -->
+    <style>
+      .error_msg{
+        background-color: #CC0000 !important;
+      }
+      .success_msg{
+        background-color: #548B54 !important;        
+      }
+      .ok{
+        background-color:green;
+        color: white;
+      }
+      .error{
+        background-color:red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+	<div data-role="page" id="ent1">
+		<div data-role="header">
+		<h1 id="titulo"></h1>
+		<a href="#" data-rel="back" data-icon="arrow-l" data-iconpos="notext"></a>
+		<input type="hidden" id="num" value=""></input>
+		</div>
+		<div data-role="main" class="ui-content">
+			
+			<div align="center" id="divVideo">
+				<img name="imagename" id="videoImg" class="coveredImage" src="http://125.125.10.111/api/lastframe.cgi" width=80% height=auto onload="setTimeout('document.getElementById(\'videoImg\').src=\'http://125.125.10.111/api/lastframe.cgi?\'+new Date().getMilliseconds()', 200)">
+			</div>
+			<!-- <input type="hidden" name="numTerminal" value="" id="numTerminal"></input> -->
+			<input data-num="" data-nombre="" type="button" id="btn_hist" value="Historial"></input>
+			<!-- </br> -->
+			<input type="button" id="btn_abrir" data-id="" data-num="" value="Abrir"></input>
+	
+		</div>
+		<div data-role="footer">
+			<h2>Control de accesos</h2>
+		</div>
+	</div>
+	
+	<div data-role="page" id="terminal">
+		<div data-role="header">
+		<h1 id="titulo"></h1>
+		<a href="#" data-rel="back" data-icon="arrow-l" data-iconpos="notext"></a>
+		<input type="hidden" id="num" value=""></input>
+		</div>
+		<div data-role="main" class="ui-content">
+			
+			<div align="center" id="divVideo">
+				<img name="imagename" id="videoImg" class="coveredImage" src="http://125.125.10.120/api/lastframe.cgi" width=80% height=auto onload="setTimeout('document.getElementById(\'videoImg\').src=\'http://125.125.10.120/api/lastframe.cgi?\'+new Date().getMilliseconds()', 100)">
+			</div>
+			<!-- <input type="hidden" name="numTerminal" value="" id="numTerminal"></input> -->
+			<input data-num="" data-nombre="" type="button" id="btn_hist" value="Historial"></input>
+			<!-- </br> -->
+			<input type="button" id="btn_abrir" data-id="" data-num="" value="Abrir"></input>
+	
+		</div>
+		<div data-role="footer">
+			<h2>Control de accesos</h2>
+		</div>
+	</div>
+	
+    
+    <!-- panel lateral -->
+    <div data-role="panel" id="panel_lateral" data-theme="b">
+      <ul data-role="listview">
+          <li><a href="#entradas" data-transition="fade">Entradas</a></li>
+          <li><a href="#salidas" data-transition="fade">Salidas</a></li>
+      </ul>
+    </div>
+  </body>
+</html>
