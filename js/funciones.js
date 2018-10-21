@@ -30,32 +30,42 @@ $(document).on("click", ".detalles", function(){
   $("#btn_abrir").attr("data-id", id);
   $("#btn_abrir").attr("data-num", num);
   
-//  $.get("http://125.125.10.1"+num, function(response){
-//		if(response.m)
-//  })
+  $.ajax({
+    url:"http://125.125.10.1"+num+"/api/lastframe.cgi?",
+    type:'GET',
+    dataType:'image/jpeg',
+    timeout: 2500,
+    success: function(status){
+        $("#divVideo").append("<img name='imagename' id='videoImg' alt='video no disponible' class='coveredImage' src='http://125.125.10.1"+num+"/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1"+num+"/api/lastframe.cgi?\\'+new Date().getMilliseconds()\', 100)\">");
+    }
+//    complete: function(){
+//        $.mobile.loading("hide");
+//    }
+  });
   
   //*** funca ***
-  $("#divVideo").append("<img name='imagename' id='videoImg' alt='video no disponible' class='coveredImage' src='http://125.125.10.1"+num+"/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1"+num+"/api/lastframe.cgi?\\'+new Date().getMilliseconds()\', 100)\">");
+//  $("#divVideo").append("<img name='imagename' id='videoImg' alt='video no disponible' class='coveredImage' src='http://125.125.10.1"+num+"/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1"+num+"/api/lastframe.cgi?\\'+new Date().getMilliseconds()\', 100)\">");
   
 
   $(":mobile-pagecontainer").pagecontainer("change","#terminal");
 });
 
 $(document).on("pageinit", "#terminal", function(){
-	$("#btn_hist").click(function(){
-		var num = $(this).data("num");
-		var url = "http://125.125.10."+num;
-		
-		$.post(url, function(response){
-			console.log("ffdfdf");
-		});
-		$.mobile.toast({
-                    message:"Abrió la barrera",
-                    classOnOpen:"success_msg"
-		});
-		
-		$(":mobile-pagecontainer").pagecontainer("change", url);
-	});
+    $.mobile.loading("show",{
+        text:"cargando...",
+        textVisible:true
+    });
+    
+    $("#btn_hist").click(function(){
+            var num = $(this).data("num");
+            var url = "http://125.125.10."+num;
+
+            $.mobile.toast({
+                message:"acción correcta",
+                classOnOpen:"success_msg"
+            });
+//		$(":mobile-pagecontainer").pagecontainer("change", url);
+    });
 });
 
 
@@ -124,8 +134,6 @@ $(document).on("pageinit", "#terminal", function(){
 	// $("#info").empty();
 	// $("#info").append("http://125.125.10."+num+"#lbEventos");
 // });
-// function cargarVideo(var id){
-	
-// }
+
 //reiniciar terminal
 //?ReiniciarComp
