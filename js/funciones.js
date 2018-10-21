@@ -1,4 +1,4 @@
-﻿
+
 $(document).on("pageinit", function(){
   //instancio panel panel_lateral
   $("#panel_lateral").panel().enhanceWithin();
@@ -35,7 +35,7 @@ $(document).on("click", ".detalles", function(){
 //  })
   
   //*** funca ***
-  $("#divVideo").append("<img name='imagename' id='videoImg' alt='video no disponible' class='coveredImage' src='http://125.125.10.1"+num+"/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1"+num+"/api/lastframe.cgi?\\'+new Date().getMilliseconds()\', 150)\">");
+  $("#divVideo").append("<img name='imagename' id='videoImg' alt='video no disponible' class='coveredImage' src='http://125.125.10.1"+num+"/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1"+num+"/api/lastframe.cgi?\\'+new Date().getMilliseconds()\', 100)\">");
   
 
   $(":mobile-pagecontainer").pagecontainer("change","#terminal");
@@ -45,30 +45,58 @@ $(document).on("pageinit", "#terminal", function(){
 	$("#btn_hist").click(function(){
 		var num = $(this).data("num");
 		var url = "http://125.125.10."+num;
-		// toast = Toast.makeText(this,"Mensaje 2", Toast.LENGTH_SHORT);
-        // toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-        // toast.show();
+		
 		$.post(url, function(response){
 			console.log("ffdfdf");
 		});
 		$.mobile.toast({
-            message:"Abrió la barrera",
-            classOnOpen:"success_msg"
-		})
+                    message:"Abrió la barrera",
+                    classOnOpen:"success_msg"
+		});
 		
 		$(":mobile-pagecontainer").pagecontainer("change", url);
 	});
 });
 
 
-
-// $(document).on("pageinit", "#terminal", function(){
-	// $("#btn_abrir").click(function(){
-		// $.post("http://125.125.10.20/pdv?abrirCancela=10", function(response){
-			
-		// })
-	// })	
-// });
+$(document).on("pageinit", "#terminal", function(){
+	$("#btn_abrir").click(function(){
+            var num = $(this).data("num");
+            var id = $(this).data("id");
+            var url = "http://125.125.10."+num+"/pdv";
+            
+            $.ajax({
+                url:url,
+                data:{abrirCancela : id},
+                type:'GET',
+                dataType:'text/plain',
+                timeout: 3000,
+                success: function(status){
+                    console.log(status);
+                    $.mobile.toast({
+                        message:"Abrió la barrera",
+                        classOnOpen:"success_msg"
+                    });
+                },
+                error: function(xhr, status){
+                    console.log(status);
+                    if(status==="timeout") {
+                        $.mobile.toast({
+                            message:status,
+                            classOnOpen:"error_msg"
+                        });
+                    } else {
+                        if(status==="error") {
+                            $.mobile.toast({
+                                message:"no hay vehículo",
+                                classOnOpen:"error_msg"
+                            });
+                        }
+                    }
+                }
+            });
+        });
+});
 
 
 
