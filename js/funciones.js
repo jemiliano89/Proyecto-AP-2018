@@ -4,7 +4,7 @@ $(document).on("pageinit", function(){
   $("#panel_lateral").panel().enhanceWithin();
 });
 
-//quitar del DOM al contenedor de video
+//quitar del DOM al contenedor de video, evito que continue solicitando imágenes
 $(document).on("pagebeforeshow", "#entradas", function(){
 	$("#divVideo").empty();
 });
@@ -21,8 +21,8 @@ $(document).on("click", ".detalles", function(){
   $("#titulo").empty();
   $("#titulo").append(nombre);
   
-  $("#btn_hist").attr("data-num", num);
-  $("#btn_hist").attr("data-nombre", nombre);
+//  $("#btn_hist").attr("data-num", num);
+//  $("#btn_hist").attr("data-nombre", nombre);
   $("#btn_abrir").attr("data-id", id);
   $("#btn_abrir").attr("data-num", num);
   
@@ -43,7 +43,7 @@ $(document).on("click", ".detalles", function(){
 //  });
   
   //*** funca ***
-  $("#divVideo").append("<img name='imagename' id='videoImg' alt='* sin video *' class='coveredImage' src='http://125.125.10.1"+num+"/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1"+num+"/api/lastframe.cgi?\\'+new Date().getMilliseconds()\', 100)\">");
+  $("#divVideo").append("<img name='imagename' id='videoImg' alt='* sin video *' class='coveredImage' src='http://125.125.10.1"+num+"/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1"+num+"/api/lastframe.cgi?\\'+new Date().getMilliseconds()\', 300)\">");
   
 
   $(":mobile-pagecontainer").pagecontainer("change","#terminal");
@@ -82,15 +82,15 @@ $(document).on("pageinit", "#terminal", function(){
             url:url,
             data:{abrirCancela : id},
             type:'GET',
-            dataType:'text/plain',
-            timeout: 3000,
+            dataType:'text/xml',
+            timeout: 2000,
             success: function(status){
                 $.mobile.toast({
                     message:"Abrió la barrera",
                     classOnOpen:"success_msg"
                 });
             },
-            error: function(xhr, status){+
+            error: function(response, status){
                 console.log(status);
                 if(status==="timeout") {
                     $.mobile.toast({
