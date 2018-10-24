@@ -58,18 +58,18 @@ $(document).on("click", ".detalles", function(){
 //    });
 //});
 
-//$(document).on("pageinit", "#terminal", function(){    
-//    $("#btn_hist").click(function(){
-//            var num = $(this).data("num");
-//            var url = "http://125.125.10."+num;
-//
-//            $.mobile.toast({
-//                message:"acción correcta",
-//                classOnOpen:"success_msg"
-//            });
-////		$(":mobile-pagecontainer").pagecontainer("change", url);
-//    });
-//});
+$(document).on("pageinit", "#terminal", function(){    
+    $("#btn_hist").click(function(){
+            //var num = $(this).data("num");
+            //var url = "http://125.125.10."+num;
+
+            $.mobile.toast({
+                message:"acción correcta",
+                classOnOpen:"success_msg"
+            });
+//		$(":mobile-pagecontainer").pagecontainer("change", url);
+    });
+});
 
 //apertura
 $(document).on("pageinit", "#terminal", function(){
@@ -81,29 +81,36 @@ $(document).on("pageinit", "#terminal", function(){
         $.ajax({
             url:url,
             data:{abrirCancela : id},
-            type:'GET',
+            type:'HEAD',
             dataType:'text/xml',
-            timeout: 2000,
-            success: function(status){
+            timeout: 2500,
+            success: function(xml){
+                
+                var res = $("res",xml).text();
+                
+                console.log("resultado success:"+res);
+                console.log(XMLHttpRequest.readyState);
+                
                 $.mobile.toast({
                     message:"Abrió la barrera",
                     classOnOpen:"success_msg"
                 });
             },
-            error: function(response, status){
-                console.log(status);
-                if(status==="timeout") {
+            error: function(xmlrequest, status, response){ 
+                
+                console.log("resultado error: "+ response.code);
+                console.log(xmlrequest.state);
+
+                if(status ==="error") {
                     $.mobile.toast({
-                        message:status,
+                        message:"no hay vehículo",
                         classOnOpen:"error_msg"
                     });
                 } else {
-                    if(status==="error") {
-                        $.mobile.toast({
-                            message:"no hay vehículo",
-                            classOnOpen:"error_msg"
-                        });
-                    }
+                    $.mobile.toast({
+                        message:"terminal sin conexión",
+                        classOnOpen:"error_msg"
+                    });
                 }
             }
         });
@@ -126,3 +133,6 @@ $(document).on("pageinit", "#terminal", function(){
 
 //reiniciar terminal
 //?ReiniciarComp
+
+
+//https://code.tutsplus.com/es/tutorials/http-headers-for-dummies--net-8039
