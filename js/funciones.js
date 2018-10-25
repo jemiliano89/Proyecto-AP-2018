@@ -77,11 +77,11 @@ $(document).on("pageinit", "#terminal", function(){
         var num = $(this).data("num");
         var id = $(this).data("id");
         var url = "http://125.125.10."+num+"/pdv";
-
+        
         $.ajax({
             url:url,
             data:{abrirCancela : id},
-            type:'HEAD',
+            type:'connect',
             dataType:'text/xml',
             timeout: 2500,
             success: function(xml){
@@ -98,8 +98,8 @@ $(document).on("pageinit", "#terminal", function(){
             },
             error: function(xmlrequest, status, response){ 
                 
-                console.log("resultado error: "+ response.code);
-                console.log(xmlrequest.state);
+                console.log("resultado error: "+ status);
+                console.log(status);
 
                 if(status ==="error") {
                     $.mobile.toast({
@@ -136,3 +136,4 @@ $(document).on("pageinit", "#terminal", function(){
 
 
 //https://code.tutsplus.com/es/tutorials/http-headers-for-dummies--net-8039
+//https://jqmtricks.wordpress.com/2014/12/01/detect-back-navigation/#more-553
