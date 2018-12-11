@@ -42,8 +42,23 @@ $(document).on("click", ".detalles", function(){
 ////    }
 //  });
   
-  //*** funca ***
-  $("#divVideo").append("<img name='imagename' id='videoImg' alt='* sin video *' class='coveredImage' src='http://125.125.10.1"+num+"/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1"+num+"/api/lastframe.cgi?\\'+new Date().getMilliseconds()\', 300)\">");
+//  //*** funca ***
+  $("#divVideo").append("<img name='imagename' id='videoImg' alt='* sin video *' class='coveredImage' src='http://125.125.10.1"+num+"/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1"+num+"/api/lastframe.cgi?\\'+new Date().getMilliseconds()\',100)\">");
+  
+  
+  
+  $.ajax({
+	  url:"http://localhost/servicios/",
+	  type:"GET",
+	  datatype:"image/jpeg",
+	  success:function(response){
+		$("#divVideo").append(response);  
+	  },
+	  error:function(){
+		
+	  }
+  });
+  
   
 
   $(":mobile-pagecontainer").pagecontainer("change","#terminal");
@@ -137,3 +152,5 @@ $(document).on("pageinit", "#terminal", function(){
 
 //https://code.tutsplus.com/es/tutorials/http-headers-for-dummies--net-8039
 //https://jqmtricks.wordpress.com/2014/12/01/detect-back-navigation/#more-553
+
+//https://ctrlzapps.wordpress.com/2013/05/13/controlar-el-boton-volver-atras-en-phonegap/
