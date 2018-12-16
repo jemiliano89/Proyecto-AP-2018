@@ -1,3 +1,22 @@
+//control de botón "atrás" en teléfono
+function onDeviceReady() {
+      document.addEventListener("backbutton", handleBackButton, true);
+}
+function handleBackButton(){
+ 
+    if($.mobile.activePage.attr('id') === '#salidas'
+              || $.mobile.activePage.attr('id') === '#salidas'){
+        navigator.app.exitApp();
+    }else if ($.mobile.activePage.attr('id') === '#terminal'){
+        $.mobile.changePage('#salidas');
+    }else{
+        navigator.app.backHistory();
+    }
+}
+document.addEventListener("deviceready", onDeviceReady, false);
+//fin 
+
+
 
 $(document).on("pageinit", function(){
   //instancio panel panel_lateral
