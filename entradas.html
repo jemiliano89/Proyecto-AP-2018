@@ -6,27 +6,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div data-role="page" id="terminal">
+        <div data-role="page" id="ent_tata">
 		<div data-role="header">
-		<h1></h1>
+		<h1>Entrada Tata</h1>
+		<a href="#" data-rel="back" data-icon="arrow-l" data-iconpos="notext"></a>
+		</div>
+		<div data-role="main" class="ui-content">
+			<div align="center">
+                            <!-- <img name="imagename" id="videoImg" class="coveredImage" src="http://125.125.10.138/api/lastframe.cgi" width=80% height=auto onload="setTimeout('document.getElementById(\'videoImg\').src=\'http://125.125.10.138/api/lastframe.cgi?\'+new Date().getMilliseconds()', 100)"> -->
+			</div>
+			<!-- <input type="hidden" name="numTerminal" value="" id="numTerminal"></input> -->
+			<input type="button" class="btn_abrir" data-id="1" data-num="11" value="Abrir">
+                        <input data-num="11" type="button" class="btn_rein" value="Reiniciar">
+		</div>
+		<div data-role="footer">
+			<h2>Control de accesos</h2>
+		</div>
+	</div>
+        
+        
+        <div data-role="page" id="ent_hipica1">
+		<div data-role="header">
+		<h1>Entrada Hípica 1</h1>
 		<a href="#" data-rel="back" data-icon="arrow-l" data-iconpos="notext"></a>
 		<!-- <input type="hidden" id="num" value=""></input> -->
 		</div>
 		<div data-role="main" class="ui-content">
 			
 			<div align="center" id="divVideo">
-				<!-- <img name="imagename" id="videoImg" class="coveredImage" src="http://125.125.10.138/api/lastframe.cgi" width=80% height=auto onload="setTimeout('document.getElementById(\'videoImg\').src=\'http://125.125.10.138/api/lastframe.cgi?\'+new Date().getMilliseconds()', 100)"> -->
+                            <!-- <img name="imagename" id="videoImg" class="coveredImage" src="http://125.125.10.138/api/lastframe.cgi" width=80% height=auto onload="setTimeout('document.getElementById(\'videoImg\').src=\'http://125.125.10.138/api/lastframe.cgi?\'+new Date().getMilliseconds()', 100)"> -->
 				
 			</div>
-			<input type="hidden" name="numTerminal" value="" id="1"> 
-			<input data-num="" data-nombre="" type="button" id="btn_hist" value="Historial">
-			<!-- </br> -->
-			<input type="button" id="btn_abrir" data-id="" data-num="" value="Abrir">
+			<!-- <input type="hidden" name="numTerminal" value="" id="numTerminal"></input> -->
+			<input type="button" id="btn_abrir" data-id="1" data-num="11" value="Abrir">
+                        <input data-num="11" type="button" id="btn_reini" value="Reiniciar">
 			
 		</div>
 		<div data-role="footer">
 			<h2>Control de accesos</h2>
 		</div>
 	</div>
+        
     </body>
 </html>
