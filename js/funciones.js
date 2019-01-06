@@ -101,51 +101,13 @@ $(document).on("pageinit", "#terminal", function () {
                 });
             },
             error: function (response) { //code 412, "precondition failed", sin presencia de vehículo
+                
                 $.mobile.toast({
                     message: "Sin presencia de vehículo",
                     classOnOpen: "error_msg"
                 });
             }
         });
-
-
-
-        // $.ajax({
-        // url:url,
-        // data:{abrirCancela : id},
-        // type:'connect',
-        // dataType:'text/xml',
-        // timeout: 2500,
-        // success: function(xml){
-
-        // var res = $("res",xml).text();
-
-        // console.log("resultado success:"+res);
-        // console.log(XMLHttpRequest.readyState);
-
-        // $.mobile.toast({
-        // message:"Abrió la barrera",
-        // classOnOpen:"success_msg"
-        // });
-        // },
-        // error: function(xmlrequest, status, response){ 
-
-        // console.log("resultado error: "+ status);
-        // console.log(status);
-
-        // if(status ==="error") {
-        // $.mobile.toast({
-        // message:"no hay vehículo",
-        // classOnOpen:"error_msg"
-        // });
-        // } else {
-        // $.mobile.toast({
-        // message:"terminal sin conexión",
-        // classOnOpen:"error_msg"
-        // });
-        // }
-        // }
-        // });
     });
 });
 
