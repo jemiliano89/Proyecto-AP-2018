@@ -79,7 +79,7 @@ $(document).on("click", ".detalles", function () {
 
 
 //apertura
-$(document).on("pageinit", "#confirmReini", function () {
+$(document).on("pageinit", "#terminal", function () {
     $("#btn_abrir").click(function(){
         $.ajax({
             url: "http://125.125.10." + $("#refTerminal").data("num") + "/pdv",
@@ -152,6 +152,9 @@ $(document).on("click", "#btn_confirm", function() {
 //    });
 });
 
+//$(document).on("click", ".toHome", function(){
+//   $(":mobile-pagecontainer").pagecontainer("change", "#pista4"); 
+//});
 
 
 //$(document).on("#terminal", "pagebeforeshow", function () {
