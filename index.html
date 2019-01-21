@@ -31,7 +31,7 @@
         </style>
     </head>
     <body>
-        <div data-role="page" id="pista2">
+        <div data-role="page" id="pista2" class="menuItem">
             <div data-role="header" data-theme="b">
                 <a href="#panel_lateral" data-icon="bars" data-iconpos="notext"></a>
                 <h2>Pista 2</h2>
@@ -43,13 +43,14 @@
                     <li><a class="detalles" data-id="1" data-nombre="Entrada Tata" data-num="11">Entrada Tata</a></li>
                     <li><a class="detalles" data-id="2" data-nombre="Entrada Hípica 1" data-num="12">Entrada Hípica 1</a></li>
                     <li><a class="detalles" data-id="3" data-nombre="Entrada Hípica 2" data-num="13">Entrada Hípica 2</a></li>
+                    <li><a class="detalles" data-id="4" data-nombre="PRUEBA TALLER" data-num="14">PRUEBA TALLER</a></li>
                 </ul>
             </div>
             <div data-role="footer" data-theme="b">
                 <h2>Control de accesos</h2>
             </div>
         </div>
-        <div data-role="page" id="pista3">
+        <div data-role="page" id="pista3" class="menuItem">
             <div data-role="header" data-theme="b">
                 <a href="#panel_lateral" data-icon="bars" data-iconpos="notext"></a>
                 <h2>Pista 3 y Subsuelo</h2>
@@ -66,7 +67,7 @@
                 <h2>Control de accesos</h2>
             </div>
         </div>
-        <div data-role="page" id="pista4">
+        <div data-role="page" id="pista4" class="menuItem">
             <div data-role="header" data-theme="b">
                 <a href="#panel_lateral" data-icon="bars" data-iconpos="notext"></a>
                 <h2>Pista 4</h2>
@@ -84,7 +85,7 @@
             </div>
         </div>
         
-        <div data-role="page" id="bandinf">
+        <div data-role="page" id="bandinf" class="menuItem">
             <div data-role="header" data-theme="b">
                 <a href="#panel_lateral" data-icon="bars" data-iconpos="notext"></a>
                 <h2>Bandeja Inf</h2>
@@ -103,7 +104,7 @@
             </div>
         </div>
         
-        <div data-role="page" id="creden">
+        <div data-role="page" id="creden" class="menuItem">
             <div data-role="header" data-theme="b">
                 <a href="#panel_lateral" data-icon="bars" data-iconpos="notext"></a>
                 <h2>Credenciados</h2>
@@ -131,9 +132,9 @@
                     <!-- <img name="imagename" id="videoImg" class="coveredImage" src="http://125.125.10.138/api/lastframe.cgi" width=80% height=auto onload="setTimeout('document.getElementById(\'videoImg\').src=\'http://125.125.10.138/api/lastframe.cgi?\'+new Date().getMilliseconds()', 100)"> -->
 
                 </div>
-                 <input type="hidden" data-id="" data-num="" value="" data-nombre="" id="refTerminal">
-                <input type="button" id="btn_abrir" value="Abrir" class="funcion">
-                <input type="button" id="btn_reini" value="Reiniciar" class="funcion">
+<!--                 <input type="hidden" data-id="" data-num="" value="" data-nombre="" id="refTerminal">-->
+                <input type="button" id="btn_abrir" value="Abrir">
+                <input type="button" id="btn_reini" value="Reiniciar">
 
             </div>
             <div data-role="footer">
@@ -148,7 +149,7 @@
             <div data-role="main" class="ui-content">
                 <div>
                     <a href="#" data-role="button" data-rel="back" data-theme="a" class="ui-button ui-shadow ui-corner-all ui-widget ui-button-a" role="button">Cancelar</a>
-                    <a href="#" data-num="" id="btn_confirm" data-role="button" data-theme="a" class="ui-button ui-shadow ui-corner-all ui-widget ui-button-a" role="button">Confirmar</a>
+                    <a href="#" id="btn_confirm" data-role="button" data-theme="a" class="ui-button ui-shadow ui-corner-all ui-widget ui-button-a" role="button">Confirmar</a>
                 </div>
             </div>
             <div data-role="footer" data-theme="b">
