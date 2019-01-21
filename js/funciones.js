@@ -74,6 +74,11 @@ $(document).on("pageinit", "#terminal", function(){
     });
 });
 
+$(document).on("pagebeforeshow", "#confirmReini", function(){
+    $("#spanReini").empty();
+    $("#spanReini").append("desea reiniciar " +nombreTerm+"?");
+});
+
 $(document).on("pageinit", "#confirmReini", function() {
     $("#btn_confirm").click(function () {
         $.mobile.loading("show", {
