@@ -1,13 +1,13 @@
-//control de botón "atrás" en teléfono  *** falta actualizar ***
+//control de botón "atrás" en teléfono 
 function onDeviceReady() {
     document.addEventListener("backbutton", handleBackButton, true);
 }
 function handleBackButton() {
-    if ($.mobile.activePage.attr('id') === '#salidas'
-            || $.mobile.activePage.attr('id') === '#salidas') {
+    if ($.mobile.activePage.attr('id') === '#pista2'
+            || $.mobile.activePage.attr('id') === '#pista3' || $.mobile.activePage.attr('id') === '#pista4' || $.mobile.activePage.attr('id') === '#creden' || $.mobile.activePage.attr('id') === '#bandinf') {
         navigator.app.exitApp();
-    } else if ($.mobile.activePage.attr('id') === '#terminal') {
-        $.mobile.changePage('#salidas');
+    } else if ($.mobile.activePage.attr('id') === '#confirmReini') {
+        $.mobile.changePage('#terminal');
     } else {
         navigator.app.backHistory();
     }
@@ -33,7 +33,7 @@ $(document).on("click", ".detalles", function () {
     numTerm = $(this).data("num");
     idTerm = $(this).data("id");
     nombreTerm = $(this).data("nombre");
-    
+
     $("#titulo").empty();
     $("#titulo").append(nombreTerm);
 
@@ -42,11 +42,16 @@ $(document).on("click", ".detalles", function () {
     $("#divVideo").append("<img name='imagename' id='videoImg' alt='* sin video *' class='coveredImage' src='http://125.125.10.1" + idTerm + "/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1" + idTerm + "/api/lastframe.cgi?\\'+new Date().getMilliseconds()\',200)\">");
 
     $(":mobile-pagecontainer").pagecontainer("change", "#terminal");
-    
+
 });
 
 //apertura
 $(document).on("click", "#btn_abrir", function () {
+    $.mobile.loading("show", {
+        text: "conectando..",
+        textVisible: true
+    });
+
     $.ajax({
         url: "http://125.125.10." + numTerm + "/pdv",
         data: {abrirCancela: idTerm},
@@ -54,12 +59,14 @@ $(document).on("click", "#btn_abrir", function () {
         dataType: "text/xml",
         timeout: 2500,
         sucess: function () {
+            $.mobile.loading("hide");
             $.mobile.toast({
                 message: "Abrió la barrera",
                 classOnOpen: "success_msg"
             });
         },
         error: function (response) { //code 412, "precondition failed", sin presencia de vehículo
+            $.mobile.loading("hide");
             $.mobile.toast({
                 message: "No hay vehículo",
                 classOnOpen: "error_msg"
@@ -68,24 +75,24 @@ $(document).on("click", "#btn_abrir", function () {
     });
 });
 
-$(document).on("pageinit", "#terminal", function(){
+$(document).on("pageinit", "#terminal", function () {
     $("#btn_reini").click(function () {
         $.mobile.changePage("#confirmReini", {role: "dialog"});
     });
 });
 
-$(document).on("pagebeforeshow", "#confirmReini", function(){
+$(document).on("pagebeforeshow", "#confirmReini", function () {
     $("#spanReini").empty();
-    $("#spanReini").append("desea reiniciar " +nombreTerm+"?");
+    $("#spanReini").append("desea reiniciar " + nombreTerm + "?");
 });
 
-$(document).on("pageinit", "#confirmReini", function() {
+$(document).on("pageinit", "#confirmReini", function () {
     $("#btn_confirm").click(function () {
         $.mobile.loading("show", {
             text: "conectando..",
             textVisible: true
         });
-        
+
         $.ajax({
             url: "http://125.125.10." + numTerm + "?ReiniciarComp",
             type: "POST",
@@ -104,11 +111,11 @@ $(document).on("pageinit", "#confirmReini", function() {
                     classOnOpen: "error_msg"
                 });
             },
-            complete: function(){
+            complete: function () {
 //                
 //                $.mobile.toast({
-//                    message: mensaje,
-//                    classOnOpen: clase
+//                    message: "",
+//                    classOnOpen: ""
 //                });
 //                $(".confirmReini").dialog("close");
             }
