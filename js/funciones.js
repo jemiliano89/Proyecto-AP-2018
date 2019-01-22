@@ -15,6 +15,20 @@ function handleBackButton() {
 document.addEventListener("deviceready", onDeviceReady, false);
 //fin 
 
+//limpiar cache
+document.addEventListener('deviceready', function() {
+    var success = function(status) {
+        alert('Message: ' + status);
+    };
+    var error = function(status) {
+        alert('Error: ' + status);
+    };
+    window.CacheClear(success, error);
+    
+//    cordova plugin add cordova-plugin-cache-clear
+});
+
+
 var numTerm = null;
 var idTerm = null;
 var nombreTerm = "*";
@@ -38,8 +52,8 @@ $(document).on("click", ".detalles", function () {
     $("#titulo").append(nombreTerm);
 
 
-//  *** carga video ***
-    $("#divVideo").append("<img name='imagename' id='videoImg' alt='* sin video *' class='coveredImage' src='http://125.125.10.1" + idTerm + "/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1" + idTerm + "/api/lastframe.cgi?\\'+new Date().getMilliseconds()\',200)\">");
+//  *** carga de video ***
+    $("#divVideo").append("<img name='imagename' id='videoImg' alt='* sin video *' class='coveredImage' src='http://125.125.10.1" + numTerm + "/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1" + numTerm + "/api/lastframe.cgi?\\'+new Date().getMilliseconds()\',300)\">");
 
     $(":mobile-pagecontainer").pagecontainer("change", "#terminal");
 
@@ -134,9 +148,6 @@ $(document).on("pageinit", "#confirmReini", function () {
 //    });
 //});
 
-// http://<IP da máquina>/pdv?abrirCancela=<IDCancela>
-//http://125.125.10.34/pvd?abrirCancela=15
-
 
 // $(document).on("pagebeforeshow", "#historial", function(){
 // var num = $("#numTerminal").val();
@@ -144,9 +155,6 @@ $(document).on("pageinit", "#confirmReini", function () {
 // $("#info").empty();
 // $("#info").append("http://125.125.10."+num+"#lbEventos");
 // });
-
-//reiniciar terminal
-//?ReiniciarComp
 
 
 //https://code.tutsplus.com/es/tutorials/http-headers-for-dummies--net-8039
