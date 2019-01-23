@@ -93,6 +93,19 @@ $(document).on("pageinit", "#terminal", function () {
     $("#btn_reini").click(function () {
         $.mobile.changePage("#confirmReini", {role: "dialog"});
     });
+    
+    $.ajax({
+        url: 'http://localhost/servicios/WcfDevDoble.Service1.svc/GetDoble',
+        data: {value: 5},
+        datatype: 'text/xml',
+        success: function(response){
+            $("#pruebaWCF").empty();
+            $("#pruebaWCF").append(response);
+        },
+        error: function(data){
+            alert("error");
+        }
+    });
 });
 
 $(document).on("pagebeforeshow", "#confirmReini", function () {
@@ -100,6 +113,7 @@ $(document).on("pagebeforeshow", "#confirmReini", function () {
     $("#spanReini").append("desea reiniciar " + nombreTerm + "?");
 });
 
+//reiniciar terminal
 $(document).on("pageinit", "#confirmReini", function () {
     $("#btn_confirm").click(function () {
         $.mobile.loading("show", {
