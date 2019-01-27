@@ -71,7 +71,7 @@ $(document).on("click", "#btn_abrir", function () {
         data: {abrirCancela: idTerm},
         type: "GET",
         dataType: "text/xml",
-        timeout: 2500,
+        timeout: 3500,
         sucess: function () {
             $.mobile.loading("hide");
             $.mobile.toast({
@@ -94,10 +94,10 @@ $(document).on("pageinit", "#terminal", function () {
         $.mobile.changePage("#confirmReini", {role: "dialog"});
     });
     
-    $.ajax({
-        url: 'http://localhost/servicios/WcfDevDoble.Service1.svc/GetDoble',
-        data: {value: 5},
-        datatype: 'text/xml',
+    /* $.ajax({
+        type:"GET",
+        contentType:"aplication/json",
+        url:"http://localhost/servicios/WcfDevDoble.Service1?value=5",
         success: function(response){
             $("#pruebaWCF").empty();
             $("#pruebaWCF").append(response);
@@ -105,7 +105,7 @@ $(document).on("pageinit", "#terminal", function () {
         error: function(data){
             alert("error");
         }
-    });
+    }); */
 });
 
 $(document).on("pagebeforeshow", "#confirmReini", function () {
