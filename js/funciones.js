@@ -16,18 +16,19 @@ document.addEventListener("deviceready", onDeviceReady, false);
 //fin 
 
 //limpiar cache
-document.addEventListener('deviceready', function() {
-    var success = function(status) {
+document.addEventListener('deviceready', function () {
+    var success = function (status) {
         alert('Message: ' + status);
     };
-    var error = function(status) {
+    var error = function (status) {
         alert('Error: ' + status);
     };
     window.CacheClear(success, error);
-    
+
 //    cordova plugin add cordova-plugin-cache-clear
 });
 
+var host = "http://125.125.10.";
 
 var numTerm = null;
 var idTerm = null;
@@ -50,10 +51,13 @@ $(document).on("click", ".detalles", function () {
 
     $("#titulo").empty();
     $("#titulo").append(nombreTerm);
+    
+    $("#confirmarNombre").empty();
+    $("#confirmarNombre").append("Desea reiniciar<br>" + nombreTerm);
 
 
 //  *** carga de video ***
-    $("#divVideo").append("<img name='imagename' id='videoImg' alt='* sin video *' class='coveredImage' src='http://125.125.10.1" + numTerm + "/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1" + numTerm + "/api/lastframe.cgi?\\'+new Date().getMilliseconds()\',300)\">");
+    $("#divVideo").append("<img name='imagename' id='videoImg' alt='* sin video *' class='coveredImage' src='http://125.125.10.1" + numTerm + "/api/lastframe.cgi?' width=80% height=auto onload=\"setTimeout('document.getElementById(\\'videoImg\\').src=\\'http://125.125.10.1" + numTerm + "/api/lastframe.cgi?\\'+new Date().getMilliseconds()\',150)\">");
 
     $(":mobile-pagecontainer").pagecontainer("change", "#terminal");
 
@@ -61,13 +65,14 @@ $(document).on("click", ".detalles", function () {
 
 //apertura
 $(document).on("click", "#btn_abrir", function () {
+    
     $.mobile.loading("show", {
         text: "conectando..",
         textVisible: true
     });
 
     $.ajax({
-        url: "http://125.125.10." + numTerm + "/pdv",
+        url: host + numTerm + "/pdv",
         data: {abrirCancela: idTerm},
         type: "GET",
         dataType: "text/xml",
@@ -81,10 +86,19 @@ $(document).on("click", "#btn_abrir", function () {
         },
         error: function (response) { //code 412, "precondition failed", sin presencia de vehículo
             $.mobile.loading("hide");
-            $.mobile.toast({
-                message: "No hay vehículo",
-                classOnOpen: "error_msg"
-            });
+
+            console.log(response.status);
+            if (response.status === 412) {
+                $.mobile.toast({
+                    message: "No hay vehículo",
+                    classOnOpen: "error_msg"
+                });
+            } else {
+                $.mobile.toast({
+                    message: "Error de conexión",
+                    classOnOpen: "error_msg"
+                });
+            }
         }
     });
 });
@@ -93,19 +107,19 @@ $(document).on("pageinit", "#terminal", function () {
     $("#btn_reini").click(function () {
         $.mobile.changePage("#confirmReini", {role: "dialog"});
     });
-    
+
     /* $.ajax({
-        type:"GET",
-        contentType:"aplication/json",
-        url:"http://localhost/servicios/WcfDevDoble.Service1?value=5",
-        success: function(response){
-            $("#pruebaWCF").empty();
-            $("#pruebaWCF").append(response);
-        },
-        error: function(data){
-            alert("error");
-        }
-    }); */
+     type:"GET",
+     contentType:"aplication/json",
+     url:"http://localhost/servicios/WcfDevDoble.Service1?value=5",
+     success: function(response){
+     $("#pruebaWCF").empty();
+     $("#pruebaWCF").append(response);
+     },
+     error: function(data){
+     alert("error");
+     }
+     }); */
 });
 
 $(document).on("pagebeforeshow", "#confirmReini", function () {
@@ -115,6 +129,7 @@ $(document).on("pagebeforeshow", "#confirmReini", function () {
 
 //reiniciar terminal
 $(document).on("pageinit", "#confirmReini", function () {
+    
     $("#btn_confirm").click(function () {
         $.mobile.loading("show", {
             text: "conectando..",
@@ -122,7 +137,7 @@ $(document).on("pageinit", "#confirmReini", function () {
         });
 
         $.ajax({
-            url: "http://125.125.10." + numTerm + "?ReiniciarComp",
+            url: host + numTerm + "?ReiniciarComp",
             type: "POST",
             timeout: 3000,
             success: function () {
@@ -138,22 +153,10 @@ $(document).on("pageinit", "#confirmReini", function () {
                     message: "no se pudo reiniciar",
                     classOnOpen: "error_msg"
                 });
-            },
-            complete: function () {
-//                
-//                $.mobile.toast({
-//                    message: "",
-//                    classOnOpen: ""
-//                });
-//                $(".confirmReini").dialog("close");
             }
         });
     });
 });
-
-//$(document).on("click", ".toHome", function(){
-//   $(":mobile-pagecontainer").pagecontainer("change", "#pista4"); 
-//});
 
 
 //$(document).on("#terminal", "pagebeforeshow", function () {
