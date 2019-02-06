@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- adaptarse a tamaÑo de pantalla -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile.toast.js"></script>
+        <!-- <script type="text/html" src="https://github.com/TobiasHennig/jquery-mobile-toast"></script> -->
+        <script type="text/javascript" src="js/funciones.js"></script>
+        <title>title</title>
+        <!-- <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" /> -->
+        <style>
+            .error_msg{
+                background-color: #CC0000 !important;
+            }
+            .success_msg{
+                background-color: #548B54 !important;        
+            }
+            .ok{
+                background-color:green;
+                color: white;
+            }
+            .error{
+                background-color:red;
+                color: white;
+            }
+            .detalles{}
+        </style>
+    </head>
+    <body>
+        <div data-role="page" id="pista2" class="menuItem">
+            <div data-role="header" data-theme="b">
+                <a href="#panel_lateral" data-icon="bars" data-iconpos="notext"></a>
+                <h2>Pista 2</h2>
+            </div>
+            <div data-role="main" class="ui-content">
+                <ul data-role="listview" data-theme="b" >
+                    <li><a class="detalles" data-num="31" data-nombre="Salida Tata" data-id="12">Salida TaTa</a></li>
+                    <li><a class="detalles" data-num="32" data-nombre="Salida Hípica" data-id="13">Salida Hípica</a></li>
+                    <li><a class="detalles" data-id="1" data-nombre="Entrada Tata" data-num="11">Entrada Tata</a></li>
+                    <li><a class="detalles" data-id="2" data-nombre="Entrada Hípica 1" data-num="12">Entrada Hípica 1</a></li>
+                    <li><a class="detalles" data-id="3" data-nombre="Entrada Hípica 2" data-num="13">Entrada Hípica 2</a></li>
+                    <li><a class="detalles" data-id="4" data-nombre="PRUEBA TALLER" data-num="14">PRUEBA TALLER</a></li>
+                </ul>
+            </div>
+            <div data-role="footer" data-theme="b">
+                <h2>Control de accesos</h2>
+            </div>
+        </div>
+        <div data-role="page" id="pista3" class="menuItem">
+            <div data-role="header" data-theme="b">
+                <a href="#panel_lateral" data-icon="bars" data-iconpos="notext"></a>
+                <h2>Pista 3 y Subsuelo</h2>
+            </div>
+            <div data-role="main" class="ui-content">
+                <ul data-role="listview" data-theme="b">
+                    <li><a class="detalles" data-num="34" data-nombre="Salida Bricolage" data-id="15">Salida Bricolage</a></li>
+                    <li><a class="detalles" data-num="38" data-nombre="Salida Subsuelo" data-id="19">Salida Subsuelo</a></li>
+                    <li><a class="detalles" data-id="7" data-nombre="Entrada Bricolage" data-num="17">Entrada Bricolage</a></li>
+                    <li><a class="detalles" data-id="10" data-nombre="Entrada Subsuelo" data-num="20">Entrada Subsuelo</a></li>
+                </ul>
+            </div>
+            <div data-role="footer" data-theme="b">
+                <h2>Control de accesos</h2>
+            </div>
+        </div>
+        <div data-role="page" id="pista4" class="menuItem">
+            <div data-role="header" data-theme="b">
+                <a href="#panel_lateral" data-icon="bars" data-iconpos="notext"></a>
+                <h2>Pista 4</h2>
+            </div>
+            <div data-role="main" class="ui-content">
+                <ul data-role="listview" data-theme="b">
+                    <li><a class="detalles" data-num="33" data-nombre="Salida Laffitte" data-id="14">Salida Laffitte</a></li>
+                    <li><a class="detalles" data-num="40" data-nombre="Salida Laffitte 2" data-id="27">Salida Laffitte 2</a></li>
+                    <li><a class="detalles" data-id="5" data-nombre="Entrada CostaAzul 1" data-num="15">Entrada CostaAzul 1</a></li>
+                    <li><a class="detalles" data-id="6" data-nombre="Entrada CostaAzul 2" data-num="16">Entrada CostaAzul 2</a></li>
+                </ul>
+            </div>
+            <div data-role="footer" data-theme="b">
+                <h2>Control de accesos</h2>
+            </div>
+        </div>
+        
+        <div data-role="page" id="bandinf" class="menuItem">
+            <div data-role="header" data-theme="b">
+                <a href="#panel_lateral" data-icon="bars" data-iconpos="notext"></a>
+                <h2>Bandeja Inf</h2>
+            </div>
+            <div data-role="main" class="ui-content">
+                <ul data-role="listview" data-theme="b">
+                    <li><a class="detalles" data-num="35" data-nombre="Salida Bici 1" data-id="16">Salida Bici 1</a></li>
+                    <li><a class="detalles" data-num="36" data-nombre="Salida Bici 2" data-id="17">Salida Bici 2</a></li>
+                    <li><a class="detalles" data-num="37" data-nombre="Salida Bici 3" data-id="18">Salida Bici 3</a></li>
+                    <li><a class="detalles" data-id="8" data-nombre="Entrada Bici 1" data-num="18">Entrada Bici 1</a></li>
+                    <li><a class="detalles" data-id="9" data-nombre="Entrada Bici 2" data-num="19">Entrada Bici 2</a></li>
+                </ul>
+            </div>
+            <div data-role="footer" data-theme="b">
+                <h2>Control de accesos</h2>
+            </div>
+        </div>
+        
+        <div data-role="page" id="creden" class="menuItem">
+            <div data-role="header" data-theme="b">
+                <a href="#panel_lateral" data-icon="bars" data-iconpos="notext"></a>
+                <h2>Credenciados</h2>
+            </div>
+            <div data-role="main" class="ui-content">
+                <ul data-role="listview" data-theme="b">
+                    <li><a class="detalles" data-num="39" data-nombre="Salida Nivel 3 y 1/2" data-id="20">Salida 3 y 1/2</a></li>
+                    <li><a class="detalles" data-id="11" data-nombre="Entrada Nivel 3 y 1/2" data-num="21">Entrada 3 y 1/2</a></li>
+                </ul>
+            </div>
+            <div data-role="footer" data-theme="b">
+                <h2>Control de accesos</h2>
+            </div>
+        </div>
+<!--///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+        <div data-role="page" id="terminal" data-theme="b">
+            <div data-role="header">
+                <h1 id="titulo">terminal</h1>
+                <a href="#" data-rel="back" data-icon="arrow-l" data-iconpos="notext"></a>
+                <!--<a href="#panel_lateral" data-icon="bars" data-iconpos="notext"></a>-->
+            </div>
+            <div data-role="main" class="ui-content">
+                <div align="center" id="divVideo">
+                    <!-- <img name="imagename" id="videoImg" class="coveredImage" src="http://125.125.10.138/api/lastframe.cgi" width=80% height=auto onload="setTimeout('document.getElementById(\'videoImg\').src=\'http://125.125.10.xxx/api/lastframe.cgi?\'+new Date().getMilliseconds()', 100)"> -->
+                </div>
+<!--                 <input type="hidden" data-id="" data-num="" value="" data-nombre="" id="refTerminal">-->
+                <input type="button" id="btn_abrir" value="Abrir">
+                <input type="button" id="btn_reini" value="Reiniciar">
+
+            </div>
+            <div data-role="footer">
+                <h2>Control de accesos</h2>
+            </div>
+        </div>
+
+        <div data-role="page"  id="confirmReini" class="confirmReini" data-theme="b">
+            <div data-role="header" >
+                <h1 >Confirmar reinicio</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <div>
+                    <a href="#" id="btn_confirm" data-role="button" data-theme="a" class="ui-button ui-shadow ui-corner-all ui-widget ui-button-a" role="button">Confirmar</a>
+                    <a href="#" data-role="button" data-rel="back" data-theme="a" class="ui-button ui-shadow ui-corner-all ui-widget ui-button-a" role="button">Cancelar</a>
+                </div>
+            </div>
+            <div data-role="footer">
+                <h2>Control de accesos</h2>
+            </div>
+        </div>
+
+<!--///////////////////////////////// panel lateral /////////////////////////////////////////////////////////////////-->
+        <div data-role="panel" id="panel_lateral" data-theme="b">
+            <ul data-role="listview">
+                <li><a href="#pista2" data-transition="slide">Pista 2</a></li>
+                <li><a href="#pista3" data-transition="slide">Pista 3 y Subsuelo</a></li>
+                <li><a href="#pista4" data-transition="slide">Pista 4</a></li>
+                <li><a href="#bandinf" data-transition="slide">Bandeja Inf</a></li>
+                <li><a href="#creden" data-transition="slide">Credenciados</a></li>
+            </ul>
+        </div>
+    </body>
+</html>
